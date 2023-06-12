@@ -106,7 +106,7 @@ const Payment = ({ cart, price }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className='w-2/3 mx-auto'>
+        <form onSubmit={handleSubmit} className='w-full md:w-3/5 mx-auto'>
 
             <CardElement
                 options={{
@@ -124,7 +124,7 @@ const Payment = ({ cart, price }) => {
                     },
                 }}
             />
-            <button className='mt-5' disabled={isLoading || !stripe || !elements} id="submit">
+            <button className="bg-gradient-to-br from-primary to-quaternary px-4 py-1 rounded text-white font-semibold mt-5" disabled={isLoading || !stripe || !elements} id="submit">
                 <span id="button-text">
                     {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
                 </span>

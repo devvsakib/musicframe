@@ -69,16 +69,35 @@ const ClassCard = ({ item, idx }) => {
                     <h3 className="font-bold">${item.price}</h3>
                 </div>
                 {
-                    item.availableSeats > 0 ? (
-                        !loggedUser ? <button onClick={handleAddToCart} className="bg-gradient-to-br from-primary to-quaternary px-4 py-1 rounded text-white font-semibold">Enroll Now</button> : <button
-                            disabled={classes?.find(c => c.classId === item._id) || loggedUser?.type !== "student"}
-                            style={{ background: classes?.find(c => c.classId === item._id) || loggedUser?.type !== "student" ? "#4B5563" : "" }}
-                            onClick={handleAddToCart} className="bg-gradient-to-br from-primary to-quaternary px-4 py-1 rounded text-white font-semibold">
-                            {classes?.find(c => c.classId === item._id) ? "Added" : "Enroll Now"}
-                        </button>
+                    item.availableSeats > 0  ? (
+                        !loggedUser ? (
+                            <button onClick={handleAddToCart} className="bg-gradient-to-br from-primary to-quaternary px-4 py-1 rounded text-white font-semibold">
+                                Enroll Now
+                            </button>
+                        ) : (
+                            <button
+                                disabled={
+                                    classes?.find(c => c.classId === item._id) ||
+                                    (loggedUser?.type !== "student")
+                                }
+                                style={{
+                                    background:
+                                        classes?.find(c => c.classId === item._id) || (loggedUser?.type !== "student" )
+                                            ? "#4B5563"
+                                            : ""
+                                }}
+                                onClick={handleAddToCart}
+                                className="bg-gradient-to-br from-primary to-quaternary px-4 py-1 rounded text-white font-semibold"
+                            >
+                                {classes?.find(c => c.classId === item._id) ? "Added" : "Enroll Now"}
+                            </button>
+                        )
                     ) : (
-                        <button className="bg-gradient-to-br from-primary/40 to-quaternary/40 px-4 py-1 rounded text-white font-semibold transition-all" disabled={true}>Class Full</button>
+                        <button className="bg-gradient-to-br from-primary/40 to-quaternary/40 px-4 py-1 rounded text-white font-semibold transition-all" disabled={true}>
+                            Class Full
+                        </button>
                     )
+
                 }
             </div>
         </motion.div>
