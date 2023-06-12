@@ -3,6 +3,7 @@ import { Banner } from '../components/Home/Banner'
 import Subscribe from '../components/Home/Subscribe'
 import PopularClasses from '../components/Home/PopularClasses'
 import PopularInstructors from '../components/Home/PopularInstructors'
+import Feature from '../components/Home/Feature'
 
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
 
       <PopularClasses />
       <PopularInstructors />
-
+      <Feature />
       <Subscribe />
     </div>
   )

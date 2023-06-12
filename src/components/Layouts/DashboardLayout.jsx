@@ -7,8 +7,10 @@ import useUserType from "../../hooks/useUserType";
 import MFButton from "../Common/MFButton";
 import { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../contexts/ThemeProvider";
 const DashboardLayout = () => {
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut();
@@ -35,7 +37,7 @@ const DashboardLayout = () => {
     refetch()
   }, [])
 
-  
+
   const location = useLocation();
   return (
     <div className="drawer max-w-[1400px] lg:drawer-open mx-auto">
@@ -55,7 +57,7 @@ const DashboardLayout = () => {
             }
           </span>
         </div>
-        <main className="mt-10 w-full px-5 flex flex-col">
+        <main className={`mt-10 w-full px-5 flex flex-col ${theme && "text-tertiary"}`}>
           <Outlet />
         </main>
 

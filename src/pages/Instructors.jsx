@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import api from "../lib/API"
 import LayoutSize from '../components/Layouts/LayoutSize'
-import MFButton from '../components/Common/MFButton'
 import InstructorCard from '../components/Cards/InstructorCard'
+import { ThemeContext } from '../contexts/ThemeProvider'
 
 const Instructors = () => {
+  const { theme } = useContext(ThemeContext)
   const { data, isLoading, isError, error } = useQuery(
     {
       queryKey: 'instructors',
@@ -16,7 +17,7 @@ const Instructors = () => {
   return (
     <div className=' mb-20'>
       <LayoutSize>
-        <h1 className='text-2xl font-bold text-center mt-20'>Our Instructors</h1>
+        <h1 className={`text-2xl font-bold text-center mt-20 ${theme && "text-white"}`}>Our Instructors</h1>
         {isLoading && <div className='mt-5 flex flex-col items-center text-center'>
           <svg
             xmlns="http://www.w3.org/2000/svg"

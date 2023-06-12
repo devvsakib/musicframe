@@ -3,8 +3,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import userData from "../../hooks/userData";
 import toast from "react-hot-toast";
 import useSClass from "../../hooks/useSClass";
+import { ThemeContext } from "../../contexts/ThemeProvider";
+import { useContext } from "react";
 
 const ClassCard = ({ item, idx }) => {
+    const { theme } = useContext(ThemeContext);
     const { className, price, classImage, instructorName, _id } = item;
     const [classes, refetch] = useSClass();
     const [loggedUser] = userData();
@@ -43,9 +46,7 @@ const ClassCard = ({ item, idx }) => {
             animate={{ y: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 * idx }}
-
-
-            className={`shadow ${item.availableSeats === "0" && "bg-primary/30"}`}>
+            className={`shadow ${item.availableSeats === "0" && "bg-primary/30"} ${theme && "text-tertiary bg-white"}`}>
             <div className="h-44 overflow-hidden">
                 {item.hot && (
                     <motion.span

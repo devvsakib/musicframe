@@ -4,7 +4,7 @@ import { FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <footer className='pt-10 border-t-2 border-primary bg-secondary'>
+    <footer className='pt-10 mt-10 border-t-2 border-primary bg-secondary'>
       <LayoutSize>
         {/* footer top */}
         <div className='grid md:grid-cols-3 gap-10 pb-14 text-white'>

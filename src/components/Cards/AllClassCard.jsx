@@ -2,8 +2,29 @@ import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { FaChair, FaCheck, FaUsers } from 'react-icons/fa'
 import { MdClose, MdFeedback } from 'react-icons/md'
+import api from '../../lib/API'
+import toast from 'react-hot-toast'
 
-const AllClassCard = ({ item, handleApproveClass, handleDenyClass, handleFeedback, setFeedback }) => {
+const AllClassCard = ({ item, handleApproveClass, handleDenyClass, refetch }) => {
+  const [feedback, setFeedback] = useState('')
+  const [modal, setModal] = useState(false)
+  const handleFeedback = (id) => {
+    if (feedback === '') return toast.error('Feedback is required')
+    api.patch(`admin/classes/feedback/${id}`, { feedback }, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access-token')}`
+      }
+    })
+      .then(res => {
+        setModal(!modal)
+        refetch()
+        toast.success('Feedback sent successfully')
+      }
+      )
+      .catch(err => console.log(err))
+
+  }
+
   return (
     <div className="grid border">
       <div className="flex gap-2 overflow-hidden rounded-l">
@@ -31,7 +52,7 @@ const AllClassCard = ({ item, handleApproveClass, handleDenyClass, handleFeedbac
             </div>
             <div className="gap-2 flex justify-start mt-2 ">
               <button
-                onClick={() => window.my_modal_3.showModal()}
+                onClick={() => setModal(!modal)}
                 className="bg-primary text-white px-5 py-1 rounded-md">
                 <MdFeedback />
               </button>
@@ -53,26 +74,28 @@ const AllClassCard = ({ item, handleApproveClass, handleDenyClass, handleFeedbac
           </div>
         </div>
       </div>
-      <dialog id="my_modal_3" key={item._id} className="modal">
+      {modal && <div key={item._id} className="d">
         <form method="dialog" className="modal-box">
           <h3 className="font-bold text-lg text-center">Send Feedback!</h3>
           <textarea className='input border-tertiary w-full mt-2 resize-none focus:outline-none py-2' type="text"
-            onChange={(e) => setFeedback(e.target.value)} 
+            onChange={(e) => setFeedback(e.target.value)}
+            value={feedback}
             placeholder='Feedback'
           ></textarea>
 
           <span className='block mx-auto cursor-pointer bg-primary text-white mt-3 text-center py-2 rounded'
             onClick={() => { handleFeedback(item._id); setFeedback('') }}
+
           >
             Send
           </span>
           <div className="modal-action">
-            <button className="bg-tertiary/30 text-xl py-2 px-3">
+            <button onClick={() => setModal(!modal)} className="bg-tertiary/30 text-xl py-2 px-3">
               <MdClose />
             </button>
           </div>
         </form>
-      </dialog>
+      </div>}
     </div>
   )
 }

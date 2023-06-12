@@ -5,7 +5,6 @@ import toast from "react-hot-toast"
 import { useState } from "react"
 
 const AllClasses = () => {
-  const [feedback, setFeedback] = useState('')
   const { data, isLoading, isError, error, refetch } = useQuery(
     {
       queryKey: 'admin-classes',
@@ -65,15 +64,6 @@ const AllClasses = () => {
       console.log(error)
     }
   }
-  const handleFeedback = (email) => {
-    // try {
-    //   await api.patch(`admin/classes/feedback/${email}`)
-    //   toast.success('Class approved')
-    // } catch (error) {
-    //   console.log(error)
-    // }
-    console.log(feedback, email)
-  }
 
 
   return (
@@ -82,8 +72,7 @@ const AllClasses = () => {
         <AllClassCard key={index} item={item}
           handleApproveClass={handleApproveClass}
           handleDenyClass={handleDenyClass}
-          handleFeedback={handleFeedback}
-          setFeedback={setFeedback}
+          refetch={refetch}
         />
       ))}
 
