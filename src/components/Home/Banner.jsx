@@ -8,7 +8,7 @@ import MFButton from '../Common/MFButton';
 
 export const Banner = () => {
   return (
-    <div className='min-h-[70vh]'>
+    <div className='min-h-[70vh] mt-16 md:mt-0'>
       <Swiper
         slidesPerView={1}
         loop={true}
