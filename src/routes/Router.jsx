@@ -13,7 +13,6 @@ import AdminRoute from "./AdminRoute";
 import {
     AllClasses,
     ManageUsers,
-    PaidClasses,
     PaymentHistory,
     EnrolledClasses,
     SelectedClasses,
@@ -73,10 +72,6 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manageusers',
                 element: <AdminRoute><ManageUsers /></AdminRoute>,
-            },
-            {
-                path: '/dashboard/paidclasses',
-                element: <AdminRoute><PaidClasses /></AdminRoute>,
             },
             {
                 path: '/dashboard/allclasses',

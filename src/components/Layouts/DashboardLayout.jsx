@@ -28,8 +28,7 @@ const DashboardLayout = () => {
   const adminMenu = [
     { name: "Dashboard", icon: <FaHome />, link: "/dashboard" },
     { name: "Manage Classes", icon: <FaList />, link: "/dashboard/allclasses" },
-    { name: "Manage Users", icon: <FaUsers />, link: "/dashboard/manageusers" },
-    { name: "Payment History", icon: <FaHistory />, link: "/dashboard/paidclasses" },
+    { name: "Manage Users", icon: <FaUsers />, link: "/dashboard/manageusers" }
   ]
   const [userType, refetch] = useUserType()
   useEffect(() => {

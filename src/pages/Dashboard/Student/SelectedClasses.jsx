@@ -7,7 +7,7 @@ function SelectedClasses() {
   const [classes, refetch] = useSClass();
 
   const handleDelete = item => {
-    fetch(`http://localhost:5000/selectedclass/${item._id}`, {
+    fetch(`https://musicframe-backend.onrender.com/selectedclass/${item._id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())

@@ -14,7 +14,7 @@ const ClassCard = ({ item, idx }) => {
     const handleAddToCart = item => {
         if (loggedUser && loggedUser?.email) {
             const classItem = { classId: _id, price, email: loggedUser?.email, classImage, className, instructorName }
-            fetch('http://localhost:5000/selectedclass', {
+            fetch('https://musicframe-backend.onrender.com/selectedclass', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

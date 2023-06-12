@@ -6,7 +6,7 @@ const useSClass = () => {
     const { refetch, data: classes = [] } = useQuery({
         queryKey: ['selectedClasses', loggedUser?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/selectedclass?email=${loggedUser?.email}`, {
+            const res = await fetch(`https://musicframe-backend.onrender.com/selectedclass?email=${loggedUser?.email}`, {
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem('access-token')}`
                 }
