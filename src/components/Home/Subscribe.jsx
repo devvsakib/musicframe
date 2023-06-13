@@ -4,7 +4,8 @@ import LayoutSize from "../Layouts/LayoutSize"
 const Subscribe = () => {
     return (
         <div className="my-32">
-            <LayoutSize>
+            <div className='max-w-[1280px] mx-auto md:px-5 xl:px-0 min-h-full'>
+
                 <div className="bg-[url(/images/cta-img.png)] rounded-md bg-no-repeat bg-cover bg-center relative">
                     <div className="py-36 backdrop-blur-sm px-10 bg-gradient-to-r from-tertiary/50 to-secondary/30 grid grid-cols-2">
                         <div>
@@ -19,7 +20,7 @@ const Subscribe = () => {
                         </div>
                     </div>
                 </div>
-            </LayoutSize>
+            </div>
         </div>
     )
 }

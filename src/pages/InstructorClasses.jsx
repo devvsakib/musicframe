@@ -47,7 +47,7 @@ const InstructorClasses = () => {
                 </div>}
                 <div>
                     <div className="w-36 mb-2 mask mask-squircle">
-                        <img src={instructor?.data.photoURL} alt={instructor?.data?.name} className='object-fit object-cover object-center' />
+                        <img src={instructor?.data.photoURL} alt={instructor?.data?.name} className='w-full object-fit object-cover object-center' />
                     </div>
                     <h1 className='inline-block bg-gradient-to-br text-transparent bg-clip-text from-primary via-quaternary to-tertiary text-2xl font-bold text-center'>{instructor?.data.name}</h1>
 
