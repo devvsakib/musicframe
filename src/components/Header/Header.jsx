@@ -7,7 +7,7 @@ import { ThemeContext } from '../../contexts/ThemeProvider';
 import { FaMoon } from 'react-icons/fa';
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
-  const { theme,toggleTheme } = useContext(ThemeContext)
+  const { theme,toggleTheme, handleDarkMode } = useContext(ThemeContext)
   console.log(theme);
   const menus = [
     { name: 'Home', path: '/' },
@@ -15,9 +15,6 @@ const Header = () => {
     { name: 'Instructors', path: '/instructors' }
   ]
   const location = useLocation();
-  const handleToggle = () => {
-    document.querySelector('html').setAttribute('class', 'overflow-hidden')
-  }
 
   return (
     <header className='bg-white/10 backdrop-blur-sm py-0 relative'>
@@ -92,7 +89,7 @@ const Header = () => {
                 </div>
                 <button
                   className='text-2xl text-primary'
-                  onClick={toggleTheme}
+                  onClick={handleDarkMode}
                 >
                   <FaMoon />
                 </button>

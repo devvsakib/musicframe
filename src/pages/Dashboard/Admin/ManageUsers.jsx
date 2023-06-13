@@ -3,7 +3,7 @@ import api from '../../../lib/API'
 import { MdAdminPanelSettings } from 'react-icons/md'
 import { GiTeacher } from 'react-icons/gi'
 import { AiOutlineClose } from 'react-icons/ai'
-// import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 const ManageUsers = () => {
   const { data, isLoading, refetch } = useQuery(

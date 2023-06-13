@@ -9,13 +9,28 @@ const ThemeProvider = ({ children }) => {
         theme ? document.querySelector("html").setAttribute("data-theme", "night") : document.querySelector("html").setAttribute("data-theme", "light")
     }, [theme]);
 
+    useEffect(() => {
+        if (theme === 'dark'){
+            document.documentElement.classList.add('dark')
+        }
+        else{
+            document.documentElement.classList.remove('dark')
+        }
+    }, [theme])
+
+    const handleDarkMode = () => {
+        setTheme(theme === 'dark' ? 'light' : 'dark')
+    }
+
+
     const toggleTheme = () => {
         setTheme(!theme);
     }
 
     const getTheme = {
         theme,
-        toggleTheme
+        toggleTheme,
+        handleDarkMode
     }
 
 

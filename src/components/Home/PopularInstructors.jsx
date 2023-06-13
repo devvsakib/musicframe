@@ -25,7 +25,6 @@ const PopularInstructors = () => {
   useEffect(() => {
     fetchInstructors()
   }, [])
-  console.log(instructors);
   return (
     <div className="my-32">
       <LayoutSize>
